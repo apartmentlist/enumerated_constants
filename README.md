@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/apartmentlist/enumerable_constants.svg?branch=master)](https://travis-ci.org/apartmentlist/enumerable_constants)
+
 # EnumerableConstants
 
 Emulate the handy enum seen in other programming languages
