@@ -31,7 +31,7 @@ class User
   attr_accessor :role
 
   module Role
-    include EnumeratedConstants
+    extend EnumeratedConstants
 
     ADMIN   = 'admin'.freeze
     MANAGER = 'manager'.freeze
