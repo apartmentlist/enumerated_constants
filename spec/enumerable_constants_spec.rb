@@ -52,12 +52,12 @@ describe EnumeratedConstants do
 
   describe '#sample' do
     it 'returns one of the constants' do
-      expect(Enumeraptor.sample).to be_in(Enumeraptor.all)
+      expect(Enumeraptor.all).to include(Enumeraptor.sample)
     end
 
     it 'returns many of the constants' do
       Enumeraptor.sample(10).each do |sample|
-        expect(sample).to be_in(Enumeraptor.all)
+        expect(Enumeraptor.all).to include(sample)
       end
     end
 
