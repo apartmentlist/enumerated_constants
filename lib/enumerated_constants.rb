@@ -2,7 +2,7 @@ require 'active_support/concern'
 require 'active_support/core_ext/module/delegation'
 require 'active_support/core_ext/object/inclusion'
 
-module EnumerableConstants
+module EnumeratedConstants
   extend ActiveSupport::Concern
 
   # Methods added to the class upon include

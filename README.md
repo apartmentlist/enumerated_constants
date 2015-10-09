@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/apartmentlist/enumerable_constants.svg?branch=master)](https://travis-ci.org/apartmentlist/enumerable_constants)
+[![Build Status](https://travis-ci.org/apartmentlist/enumerated_constants.svg?branch=master)](https://travis-ci.org/apartmentlist/enumerated_constants)
 
-# EnumerableConstants
+# EnumeratedConstants
 
 Emulate the handy enum seen in other programming languages
 
@@ -9,7 +9,7 @@ Emulate the handy enum seen in other programming languages
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'enumerable_constants'
+gem 'enumerated_constants'
 ```
 
 And then execute:
@@ -18,20 +18,20 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install enumerable_constants
+    $ gem install enumerated_constants
 
 ## Usage
 
-Include `EnumerableConstants` in a module that defines a set of related constants, e.g.
+Include `EnumeratedConstants` in a module that defines a set of related constants, e.g.
 
 ```
-require 'enumerable_constants'
+require 'enumerated_constants'
 
 class User
   attr_accessor :role
 
   module Role
-    include EnumerableConstants
+    include EnumeratedConstants
 
     ADMIN   = 'admin'.freeze
     MANAGER = 'manager'.freeze
@@ -125,7 +125,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/enumerable_constants/fork )
+1. Fork it ( https://github.com/[my-github-username]/enumerated_constants/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

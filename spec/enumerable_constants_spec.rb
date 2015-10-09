@@ -1,7 +1,7 @@
-describe EnumerableConstants do
+describe EnumeratedConstants do
   # A test enumeration
   module Enumeraptor
-    include EnumerableConstants
+    include EnumeratedConstants
 
     EYES  = 2
     CLAWS = 6
@@ -19,7 +19,7 @@ describe EnumerableConstants do
     end
 
     it 'does not include the concern methods' do
-      expect(subject).to_not include(EnumerableConstants::ClassMethods)
+      expect(subject).to_not include(EnumeratedConstants::ClassMethods)
     end
 
     it 'does not include groups' do
