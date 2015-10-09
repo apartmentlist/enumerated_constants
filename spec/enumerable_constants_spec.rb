@@ -1,7 +1,7 @@
 describe EnumeratedConstants do
   # A test enumeration
   module Enumeraptor
-    include EnumeratedConstants
+    extend EnumeratedConstants
 
     EYES  = 2
     CLAWS = 6
@@ -16,10 +16,6 @@ describe EnumeratedConstants do
 
     it 'includes all constants' do
       expect(subject).to eq([2, 6, 'lots', 'faster than you'])
-    end
-
-    it 'does not include the concern methods' do
-      expect(subject).to_not include(EnumeratedConstants::ClassMethods)
     end
 
     it 'does not include groups' do
