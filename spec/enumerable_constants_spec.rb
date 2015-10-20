@@ -33,10 +33,6 @@ describe EnumeratedConstants do
   end
 
   describe '#except' do
-    it 'response to nonsense with everything' do
-      expect(Enumeraptor.except(:ham)).to eq(Enumeraptor.all)
-    end
-
     it 'includes everything but the argument' do
       expect(Enumeraptor.except(:eyes))
         .to eq(Enumeraptor.all - [Enumeraptor::EYES])
@@ -46,6 +42,14 @@ describe EnumeratedConstants do
       it 'includes everything but the arguments' do
         expect(Enumeraptor.except(:eyes, :claws))
           .to eq(Enumeraptor.all - [Enumeraptor::EYES, Enumeraptor::CLAWS])
+      end
+    end
+
+    context 'with a non-existant constant' do
+      it 'raises an ArgumentError' do
+        expect do
+          Enumeraptor.except(:ham)
+        end.to raise_error(ArgumentError, 'Constant HAM does not exist')
       end
     end
   end

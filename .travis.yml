@@ -1,3 +1,7 @@
 language: ruby
 rvm:
-  - 2.2.1
+- 2.2.1
+addons:
+  code_climate:
+    repo_token:
+      secure: lxx9AvU6thleuPHC2lqrEodyGCrC3VsqaBzYvn5FCB57tiSUGxQmHUugL9mjzyrEOTJy7eG3ry6Fdv/iRFE7wpjdALAd6fQ6s5p9qsCiDZEuplRjNfh/TnF+q8aO1yXRsNH4uSFnv+mDTRT/9Ejz1vm0sVidXA+sHndnU22U/lEBYnxiuB8tYE++4YLQwo4YHs7AQ/OvberouJGfKDlVP0rDpyFgPPT3SQesk1/d3IQ8w9nit/8ioJfmEtPneFMxn9+dVgqsyiGC80GcziZJL+QOinYnK/K7ipUoWat3Zkw63PkOjcxd0oK4biOqKkA738fcQyjlKZwVG4Y9frhc+bcpblvjM3hhaccePAIfN1K2YiWa4SnCau5hQMvPnoskUinfH+/4liDMWKOnizpUXF0a7qilaH1wMU2KGRCXWQ3k7v2jAKDWOuDX61vgm0nUip7+dcrG9OlFZZBnv6rYVwj71dxCztD0rGf9QNO1I2lLwDP/gFKZt5DwLjw68n+e128InRt5VepT1WxhqwSOh9uBBFJz2EaBl+cgxO7JYM/QfzuFp586lohRQ6m00zlqPIzJTJ9/oNzPAB9G12vttcSPwFjLOBYauPBjAcjln5bULYgLa3Oabn+35Uv1LglywdDz0KzHvPsgYexxQHomVdXk9OiA1NlDVni4jCMwAtc=

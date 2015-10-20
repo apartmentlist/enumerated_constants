@@ -1,5 +1,7 @@
 require 'forwardable'
 
+# Mix-in that allows you to treat a module of related constants like
+# a good ol' fashioned enum.
 module EnumeratedConstants
   extend Forwardable
 
@@ -15,12 +17,12 @@ module EnumeratedConstants
   # @param name [Symbol,String] The name of the constant you don't want
   # @return [Array] @all except the value of that constant
   def except(*names)
-    const_names =
     names = names.map(&:upcase).map(&:to_sym)
     values = names.map do |name|
       begin
         const_get(name)
       rescue NameError
+        raise ArgumentError, "Constant #{name} does not exist"
       end
     end.compact
     all - values
