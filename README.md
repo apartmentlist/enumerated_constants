@@ -26,7 +26,7 @@ Or install it yourself as:
 
 Include `EnumeratedConstants` in a module that defines a set of related constants, e.g.
 
-```
+```ruby
 require 'enumerated_constants'
 
 class User
