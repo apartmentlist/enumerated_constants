@@ -1,0 +1,95 @@
+version: 2.1
+
+jobs:
+  checkout-code:
+    docker:
+      - image: circleci/ruby:2.5.7
+
+    working_directory: ~/enumerated_constants
+
+    steps:
+      - checkout
+      - run:
+          command: mkdir log tmp
+      - save_cache:
+          key: code-cache-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - /home/circleci/enumerated_constants
+
+  test-ruby25:
+    docker:
+      - image: circleci/ruby:2.5.7
+
+    environment:
+      RAILS_ENV: test
+      RACK_ENV: test
+
+    working_directory: ~/enumerated_constants
+
+    steps:
+      - restore_cache:
+          key: code-cache-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          command: |
+            gem install bundler
+      - run:
+          command: bundle install
+      - run:
+          command: bundle exec rspec spec
+
+  test-ruby26:
+    docker:
+      - image: circleci/ruby:2.6.5
+
+    environment:
+      RAILS_ENV: test
+      RACK_ENV: test
+
+    working_directory: ~/enumerated_constants
+
+    steps:
+      - restore_cache:
+          key: code-cache-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          command: |
+            gem install bundler
+      - run:
+          command: bundle install
+      - run:
+          command: bundle exec rspec spec
+
+  test-ruby27:
+    docker:
+      - image: circleci/ruby:2.7.0
+
+    environment:
+      RAILS_ENV: test
+      RACK_ENV: test
+
+    working_directory: ~/enumerated_constants
+
+    steps:
+      - restore_cache:
+          key: code-cache-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          command: |
+            gem install bundler
+      - run:
+          command: bundle install
+      - run:
+          command: bundle exec rspec spec
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - checkout-code
+      - test-ruby25:
+          requires:
+            - checkout-code
+      - test-ruby26:
+          requires:
+            - checkout-code
+      - test-ruby27:
+          requires:
+            - checkout-code
