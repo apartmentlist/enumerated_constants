@@ -15,7 +15,7 @@ describe EnumeratedConstants do
     subject { Enumeraptor.all }
 
     it 'includes all constants' do
-      expect(subject).to eq([2, 6, 'lots', 'faster than you'])
+      expect(subject).to match_array([2, 6, 'lots', 'faster than you'])
     end
 
     it 'does not include groups' do
