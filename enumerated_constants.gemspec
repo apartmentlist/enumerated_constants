@@ -1,10 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require_relative 'lib/enumerated_constants/version.rb'
 
 Gem::Specification.new do |spec|
   spec.name    = 'enumerated_constants'
-  spec.version = '0.3.0'
+  spec.version = EnumeratedConstants::VERSION
   spec.authors = ['Tom Collier']
   spec.email   = ['collier@apartmentlist.com']
 
