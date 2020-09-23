@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.org/apartmentlist/enumerated_constants.svg?branch=main)](https://travis-ci.org/apartmentlist/enumerated_constants)
-[![Code Climate](https://codeclimate.com/github/apartmentlist/enumerated_constants/badges/gpa.svg)](https://codeclimate.com/github/apartmentlist/enumerated_constants)
-[![Test Coverage](https://codeclimate.com/github/apartmentlist/enumerated_constants/badges/coverage.svg)](https://codeclimate.com/github/apartmentlist/enumerated_constants/coverage)
-
 # EnumeratedConstants
 
 Emulate the handy enum seen in other programming languages
