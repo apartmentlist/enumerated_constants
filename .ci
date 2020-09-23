@@ -1,0 +1,133 @@
+properties([
+  buildDiscarder(
+    logRotator(
+      artifactDaysToKeepStr: '',
+      artifactNumToKeepStr: '',
+      daysToKeepStr: '30',
+      numToKeepStr: '100'
+    )
+  )
+])
+
+def k8s_label = "${UUID.randomUUID().toString()}"
+
+pipeline {
+
+  environment {
+    APP_NAME = 'enumerated_constants'
+    CLOUDSDK_CORE_DISABLE_PROMPTS = '1'
+    GIT_COMMIT_SHORT = sh(script: "printf \$(git rev-parse --short ${GIT_COMMIT})", returnStdout: true)
+    APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE = "true"
+    LANG = "en_US.UTF-8"
+    LANGUAGE = "en_US:en"
+    LC_ALL = "en_US.UTF-8"
+  }
+
+  agent {
+    kubernetes {
+      label k8s_label
+      defaultContainer 'jnlp'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: gcc
+    image: gcc:9.3
+    command:
+    - "tail"
+    - "-f"
+    - "/dev/null"
+    imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+  - name: ruby25
+    image: gcr.io/al-development/ruby:2.5.8
+    imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "2048Mi"
+        cpu: "2"
+      requests:
+        memory: "2048Mi"
+        cpu: "2"
+    command:
+    - "tail"
+    - "-f"
+    - "/dev/null"
+  - name: ruby26
+    image: gcr.io/al-development/ruby:2.6.6
+    imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "2048Mi"
+        cpu: "2"
+      requests:
+        memory: "2048Mi"
+        cpu: "2"
+    command:
+    - "tail"
+    - "-f"
+    - "/dev/null"
+  - name: ruby27
+    image: gcr.io/al-development/ruby:2.7.1
+    imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "2048Mi"
+        cpu: "2"
+      requests:
+        memory: "2048Mi"
+        cpu: "2"
+    command:
+    - "tail"
+    - "-f"
+    - "/dev/null"
+"""
+    }
+  }
+
+  options {
+    timestamps()
+    timeout(time: 15, unit: 'MINUTES')
+  }
+
+  stages {
+    stage('Unit Tests') {
+      parallel {
+        stage('enumerated_constants gem ruby 2.5') {
+          steps {
+            container('ruby25') {
+              sh script: 'gem install bundler:2.1.4 && bundle install', label: 'install'
+              sh script: 'bundle exec rake', label: 'test'
+            } //container
+          } //steps
+        }//stage
+
+        stage('enumerated_constants gem ruby 2.6') {
+          steps {
+            container('ruby26') {
+              sh script: 'gem install bundler:2.1.4 && bundle install', label: 'install'
+              sh script: 'bundle exec rake', label: 'test'
+            } //container
+          } //steps
+        }//stage
+
+        stage('enumerated_constants gem ruby 2.7') {
+          steps {
+            container('ruby27') {
+              sh script: 'gem install bundler:2.1.4 && bundle install', label: 'install'
+              sh script: 'bundle exec rake', label: 'test'
+            } //container
+          } //steps
+        }//stage
+      } //parallel
+    } //stage
+  }
+}
